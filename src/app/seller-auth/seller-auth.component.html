@@ -1,0 +1,27 @@
+<div class="flex justify-center mt-10">
+    <div *ngIf="!showLogin"
+        class="bg-purple-100 flex flex-col items-center gap-5 border-purple-400 border-2 w-[600px] ">
+        <h1 class="font-bold mt-4 text-purple-800"> Seller Sign-Up</h1>
+        <form #sellerSignupDetails="ngForm" (ngSubmit)="onSignup(sellerSignupDetails.value)"
+            class="flex flex-col gap-4 w-96 p-6">
+            <input ngModel name="name" type="text" placeholder="Enter Name">
+            <input ngModel name="email" type="email" placeholder="Enter Email">
+            <input ngModel name="password" type="password" placeholder="Enter Password">
+            <button ngModel class="rounded bg-purple-700 w-20 text-white p-1">SignUp</button>
+            <button (click)="onLoginToggleButton()" class=" rounded  w-[100%] text-purple-700 font-semibold p-1">Already have an
+                account? Click to LogIn</button>
+        </form>
+    </div>
+
+    <div *ngIf="showLogin" class="bg-purple-100 flex flex-col items-center gap-5 border-purple-400 border-2 w-[600px] ">
+        <h1 class="font-bold mt-4 text-purple-800"> Seller Login</h1>
+        <form #LoginForm="ngForm" (ngSubmit)="onSignup(LoginForm.value)" class="flex flex-col gap-4 w-96 p-6">
+
+            <input ngModel name="email" type="email" placeholder="Enter Email">
+            <input ngModel name="password" type="password" placeholder="Enter Password">
+            <button ngModel class="rounded bg-purple-700 w-20 text-white p-1">Login</button>
+            <button (click)="onLoginToggleButton()" class=" rounded  w-[100%] text-purple-700 font-semibold p-1">Don't have an
+                account yet? Click to SignUp</button>
+        </form>
+    </div>
+</div>
