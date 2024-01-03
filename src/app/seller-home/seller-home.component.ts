@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SellerService } from '../services/seller.service';
 
 @Component({
   selector: 'app-seller-home',
@@ -10,10 +11,20 @@ import { Router } from '@angular/router';
   styleUrl: './seller-home.component.css'
 })
 export class SellerHomeComponent {
-  constructor(private router:Router){}
+  constructor(private router:Router, private sellerauthServices:SellerService,
+    private http:HttpClient){}
+  response:string = "Welcome to your dashboard"
 
-  logoutButton(){
-    localStorage.removeItem("seller")
-    this.router.navigate(['seller-auth'])
+
+  ngOnInit(){
+    this.sellerauthServices.sellerLoggedIn((message:string)=>{
+      this.response = message
+    })
   }
+  logoutButton(){
+
+    this.sellerauthServices.logoutButton()
+  }
+
+
 }
